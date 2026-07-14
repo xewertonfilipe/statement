@@ -13,7 +13,7 @@ describe("selectTransactions", () => {
             createdAt,
           },
         ],
-        status: "succeeded",
+        status: "succeeded" as const,
         error: null,
       },
     };

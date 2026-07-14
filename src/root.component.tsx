@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 
 import { Statement } from "./components/Statement";
 import {
@@ -9,14 +9,15 @@ import {
   selectTransactionsStatus,
 } from "./features/transactions/transactionSlice";
 import store from "./store";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
 
 const TRANSACTION_CREATED_EVENT = "bank:transaction:created";
 
 function StatementApp() {
-  const dispatch = useDispatch();
-  const transactions = useSelector((state) => selectTransactions(state));
-  const status = useSelector((state) => selectTransactionsStatus(state));
-  const error = useSelector((state) => selectTransactionsError(state));
+  const dispatch = useAppDispatch();
+  const transactions = useAppSelector(selectTransactions);
+  const status = useAppSelector(selectTransactionsStatus);
+  const error = useAppSelector(selectTransactionsError);
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -45,7 +46,7 @@ function StatementApp() {
   );
 }
 
-export default function Root(props) {
+export default function Root() {
   return (
     <>
       <Provider store={store}>
