@@ -4,6 +4,21 @@ module.exports = {
   transform: {
     "^.+\\.(j|t)sx?$": "babel-jest",
   },
+  collectCoverageFrom: [
+    "**/*.{ts,tsx}",
+    "!**/*.test.{ts,tsx}",
+    "!types/**",
+    "!interfaces/**",
+    "!**/styles.tsx",
+  ],
+  coverageThreshold: {
+    global: {
+      statements: 80,
+      branches: 50,
+      functions: 80,
+      lines: 80,
+    },
+  },
   moduleNameMapper: {
     "\\.(css)$": "identity-obj-proxy",
     "single-spa-react/parcel": "single-spa-react/lib/cjs/parcel.cjs",
