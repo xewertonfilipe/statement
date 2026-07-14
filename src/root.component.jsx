@@ -10,6 +10,8 @@ import {
 } from "./features/transactions/transactionSlice";
 import store from "./store";
 
+const TRANSACTION_CREATED_EVENT = "bank:transaction:created";
+
 function StatementApp() {
   const dispatch = useDispatch();
   const transactions = useSelector((state) => selectTransactions(state));
@@ -20,7 +22,27 @@ function StatementApp() {
     dispatch(fetchTransactions());
   }, [dispatch]);
 
-  return <Statement transactions={transactions} status={status} error={error} />;
+  useEffect(() => {
+    const handleTransactionCreated = () => {
+      dispatch(fetchTransactions());
+    };
+
+    document.addEventListener(
+      TRANSACTION_CREATED_EVENT,
+      handleTransactionCreated
+    );
+
+    return () => {
+      document.removeEventListener(
+        TRANSACTION_CREATED_EVENT,
+        handleTransactionCreated
+      );
+    };
+  }, [dispatch]);
+
+  return (
+    <Statement transactions={transactions} status={status} error={error} />
+  );
 }
 
 export default function Root(props) {
