@@ -31,7 +31,9 @@ describe("Root component", () => {
     const fetchSpy = jest
       .spyOn(transactionSlice, "fetchTransactions")
       .mockReturnValue(
-        action as unknown as ReturnType<typeof transactionSlice.fetchTransactions>
+        action as unknown as ReturnType<
+          typeof transactionSlice.fetchTransactions
+        >
       );
 
     render(<Root />);
@@ -47,7 +49,9 @@ describe("Root component", () => {
     const fetchSpy = jest
       .spyOn(transactionSlice, "fetchTransactions")
       .mockReturnValue(
-        action as unknown as ReturnType<typeof transactionSlice.fetchTransactions>
+        action as unknown as ReturnType<
+          typeof transactionSlice.fetchTransactions
+        >
       );
     const addEventListenerSpy = jest.spyOn(document, "addEventListener");
     const removeEventListenerSpy = jest.spyOn(document, "removeEventListener");

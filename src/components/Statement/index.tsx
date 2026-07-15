@@ -8,7 +8,11 @@ interface TransactionsProps {
   error: string | null;
 }
 
-export const Statement = ({ transactions, status, error }: TransactionsProps) => {
+export const Statement = ({
+  transactions,
+  status,
+  error,
+}: TransactionsProps) => {
   return (
     <Container>
       <Heading>Extrato</Heading>
