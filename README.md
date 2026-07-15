@@ -51,6 +51,12 @@ docker compose up --build
 
 - Modo local do orchestrator (`isLocal`): consome `http://localhost:9005/bytebank-statement.js`
 
+## Responsividade
+
+- Layout do extrato ajustado para telas pequenas, tablets e desktop.
+- Breakpoints validados: 320px, 768px e 1024px.
+- Ajustes principais: container com espacamento responsivo, itens de transacao com melhor adaptacao horizontal e tipografia escalavel.
+
 ## Scripts uteis
 
 - `npm start`: sobe webpack dev server na porta 9005
