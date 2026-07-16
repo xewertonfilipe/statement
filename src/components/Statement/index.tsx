@@ -1,5 +1,6 @@
 import type { Transaction as ITransaction } from "../../interfaces";
 import { Transaction } from "../Transaction";
+import { LoadingStatement } from "./LoadingStatement";
 import { Container, Heading, TransactionsList } from "./styles";
 
 interface TransactionsProps {
@@ -20,7 +21,7 @@ export const Statement = ({
   return (
     <Container>
       <Heading>Extrato</Heading>
-      {status === "loading" ? <p>Carregando extrato...</p> : null}
+      {status === "loading" ? <LoadingStatement /> : null}
       {status === "failed" && error ? <p>{error}</p> : null}
       {shouldShowEmptyState ? <p>Voce ainda nao possui transacoes.</p> : null}
       {hasTransactions ? (
