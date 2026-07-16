@@ -13,16 +13,23 @@ export const Statement = ({
   status,
   error,
 }: TransactionsProps) => {
+  const hasTransactions = transactions.length > 0;
+  const shouldShowEmptyState =
+    !hasTransactions && status !== "loading" && status !== "failed";
+
   return (
     <Container>
       <Heading>Extrato</Heading>
       {status === "loading" ? <p>Carregando extrato...</p> : null}
       {status === "failed" && error ? <p>{error}</p> : null}
-      <TransactionsList>
-        {transactions.map((transaction) => (
-          <Transaction key={transaction.id} transaction={transaction} />
-        ))}
-      </TransactionsList>
+      {shouldShowEmptyState ? <p>Voce ainda nao possui transacoes.</p> : null}
+      {hasTransactions ? (
+        <TransactionsList>
+          {transactions.map((transaction) => (
+            <Transaction key={transaction.id} transaction={transaction} />
+          ))}
+        </TransactionsList>
+      ) : null}
     </Container>
   );
 };

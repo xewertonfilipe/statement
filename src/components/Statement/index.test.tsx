@@ -25,6 +25,17 @@ describe("Statement component", () => {
     ).toBeInTheDocument();
   });
 
+  it("shows empty state when there are no transactions", () => {
+    const { getByText, queryByRole } = render(
+      <Statement transactions={[]} status="succeeded" error={null} />
+    );
+
+    expect(
+      getByText(/Voce ainda nao possui transacoes\./i)
+    ).toBeInTheDocument();
+    expect(queryByRole("list")).not.toBeInTheDocument();
+  });
+
   it("renders transaction list items", () => {
     const { getByText } = render(
       <Statement
