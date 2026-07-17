@@ -42,7 +42,7 @@ export const fetchTransactions = createAsyncThunk<
   { rejectValue: string }
 >("transactions/fetchTransactions", (_, { rejectWithValue }) => {
   return http
-    .get("/transactions?limit=6")
+    .get("/transactions?limit=3")
     .then((response) => {
       return response.data ?? [];
     })

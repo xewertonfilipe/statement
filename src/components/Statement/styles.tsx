@@ -11,9 +11,10 @@ const shimmer = keyframes`
 
 export const Container = styled.section`
   width: 100%;
+  min-height: clamp(300px, 48vw, 360px);
   background-color: #f5f5f5;
   border-radius: 8px;
-  padding: clamp(16px, 4vw, 24px);
+  padding: clamp(16px, 4vw, 16px);
   box-sizing: border-box;
 `;
 
@@ -28,7 +29,7 @@ export const Heading = styled.h2`
 export const TransactionsList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 5vw, 34px);
+  gap: clamp(14px, 5vw, 14px);
 `;
 
 const loadingBase = css`

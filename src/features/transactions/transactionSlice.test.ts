@@ -33,7 +33,7 @@ describe("fetchTransactions", () => {
 
     const action = await fetchTransactions()(jest.fn(), jest.fn(), undefined);
 
-    expect(mockedHttp.get).toHaveBeenCalledWith("/transactions?limit=6");
+    expect(mockedHttp.get).toHaveBeenCalledWith("/transactions?limit=3");
     expect(action.type).toBe("transactions/fetchTransactions/fulfilled");
     expect(action.payload).toEqual(payload);
   });
